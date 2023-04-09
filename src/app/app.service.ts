@@ -7,30 +7,30 @@ import { gitPublic } from './model';
 export class GitService {
   private http = inject(HttpClient);
   private useQuery = inject(UseQuery);
-
-  getTodos() {
-    return this.useQuery(['todos'], () => {
-      return this.http.get<gitPublic[]>(
-        "https://api.github.com/gists/public"
-      );
-    });
-  }
-  // 'https://jsonplaceholder.typicode.com/todos'
-  getTodo(id: number) {
-    return this.useQuery(['todo', id], () => {
+  
+  search(q:any) {
+    return this.useQuery(['search'], () => {
       return this.http.get<any>(
-        `https://jsonplaceholder.typicode.com/todos/${id}`
+        `https://api.github.com/search/repositories?q=`+q
       );
     });
   }
+  }
+  
+  
+  // getTodos() {
+  //   return this.useQuery(['todos'], () => {
+  //     return this.http.get<gitPublic[]>(
+  //       "https://api.github.com/gists/public"
+  //     );
+  //   });
+  // }
+  // // 'https://jsonplaceholder.typicode.com/todos'
+  // getTodo(id: number) {
+  //   return this.useQuery(['todo', id], () => {
+  //     return this.http.get<any>(
+  //       `https://jsonplaceholder.typicode.com/todos/${id}`
+  //     );
+  //   });
+  // }
 
-search(q:any) {
-  return this.useQuery(['search'], () => {
-    return this.http.get<any>(
-      `https://api.github.com/search/repositories?q=`+q
-    );
-  });
-}
-}
-
-// https://api.github.com/search/repositories?q={%22angular%22}{&page,per_page,sort,order}

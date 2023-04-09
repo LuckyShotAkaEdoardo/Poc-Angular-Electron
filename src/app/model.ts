@@ -52,7 +52,7 @@ export interface gitItemsSearch{
     
         name: string,
    owner:Owner
-   url:string
+   html_url:string
 }
 
 

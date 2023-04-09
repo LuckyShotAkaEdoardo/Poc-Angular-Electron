@@ -33,5 +33,6 @@ export class AppComponent implements OnDestroy {
       }
     }, 1000);
   }
+
   title = 'Poc-Angular-Electron';
 }
