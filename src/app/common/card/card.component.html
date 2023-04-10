@@ -1,0 +1,20 @@
+
+<div style="padding: 20px">
+
+  <ng-container *ngIf="data$ | async as dt">
+
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Repo Name {{dt.name}}</mat-card-title>
+              <mat-card-subtitle>{{dt.description | slice:0:200}}<ng-container *ngIf="dt.description && dt.description.lenght > 200"> ...</ng-container></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+              <button mat-button>INFO</button>
+              <button (click)="download.emit(dt.clone_url)" mat-button>CLONE</button>
+            </mat-card-actions>
+          </mat-card>
+
+
+  </ng-container>
+</div>
+<!-- <router-outlet></router-outlet> -->

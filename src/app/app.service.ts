@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { UseQuery } from '@ngneat/query';
-import { gitPublic } from './model';
+import { Paginator } from './model';
 
 @Injectable({ providedIn: 'root' })
 export class GitService {
   private http = inject(HttpClient);
   private useQuery = inject(UseQuery);
-  
+
   search(q:any) {
     return this.useQuery(['search'], () => {
-      return this.http.get<any>(
+      return this.http.get<Paginator>(
         `https://api.github.com/search/repositories?q=`+q
       );
     });

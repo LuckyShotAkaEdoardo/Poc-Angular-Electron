@@ -1,19 +1,12 @@
+<button (click)="beep()">test</button>
 <serachBar (update)="search($event)"></serachBar>
 <div style="padding: 20px">
   <h1>SEARCH RESULT</h1>
   <ng-container *ngIf="list$ | async as list">
     <div class="cardList">
       <div *ngFor="let repo of list">
-        <div class="card">
-          <div class="avatar">
-            <img width="100%" height="100%" [src]="repo.owner.avatar_url" />
-          </div>
-          <div class="description">
-            <p>{{ repo.owner.login }}</p>
-            <div class="repo">Repo :{{ repo.name }}</div>
-            <a [href]="repo.html_url">info</a>
-          </div>
-        </div>
+      
+        <my-card [data]="repo" (download)="saveRepo($event)"></my-card>
       </div>
     </div>
   </ng-container>
